@@ -1,0 +1,75 @@
+#MissionSection {
+	background-color: white;
+	height: 478px;
+	color:#7A7A7A;
+	display: flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+}
+
+#MissionSection h1 {
+	text-align:center;
+	height: 50px;
+	color:#313131;
+	margin-bottom:10px;
+}
+
+#MissionSection p1 {
+	line-height:1.8;
+	display: inherit;
+	font-size:15px;
+	width:600px;
+}
+#MissionSection p1:nth-child(2) {
+	padding-bottom:20px;
+}
+#MissionSection p1:nth-child(3) {
+	border-bottom: solid 1px #DDDDDD;
+	padding-bottom:40px;
+}
+
+@media only screen and (max-width: 870px) {
+  #MissionSection {
+	padding:10px 150px 10px 150px;
+  }
+  #MissionSection p1 {
+  	padding-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #MissionSection {
+	padding:10px 100px 10px 100px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #MissionSection {
+	padding:10px 30px 10px 50px;
+  }
+  #MissionSection p1 {
+  	width:500px;
+  }
+}
+
+
+@media only screen and (max-width: 640px) {
+  #MissionSection {
+	height:549px;
+  }
+  #MissionSection p1 {
+  	width:90%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #MissionSection {
+	height:600px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  #MissionSection {
+	height:700px;
+  }
+}

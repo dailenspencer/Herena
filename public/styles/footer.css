@@ -1,0 +1,16 @@
+#Footer {
+	height:200px;
+	background-color: white;
+	text-align: center;
+	color:black;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+
+}
+#Footer h1 {
+	cursor: pointer;
+}
+#Footer h1:hover {
+	color:lightgray;
+}

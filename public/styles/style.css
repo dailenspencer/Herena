@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Julia';
+  src:  url('../Fonts/juliasanssone.woff2') format('woff2')
+}
+
+html {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+h1,h2 {
+    font-weight: 400;
+    font-family: 'Julia';
+    font-style:normal;
+    font-size:23;
+    letter-spacing: .02em;
+    line-height: 1.2em;
+    text-transform:none;
+    -webkit-font-smoothing: antialiased;
+}
+body {
+	margin: 0px;
+}
+
+#MainBody {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    min-width: 400px;
+}
+
+#landing-window,
+#second-breaker-window,
+#image-spacer-window
+{
+    height: 100%;
+    background: transparent;
+    position:relative;
+}
+
+
+
+
+

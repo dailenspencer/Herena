@@ -1,0 +1,57 @@
+#Collections {
+	background-color: white;
+}
+
+#Collections h1 {
+	text-align:center;
+	padding-top:30px;
+	font-size:30px;
+	margin-bottom: 0px;
+}
+
+.CollectionContainer {
+	display: flex;
+	flex-direction:row;
+
+}
+.CollectionContainerDescription {
+	width:50%;
+	float:left;
+	text-align:center;
+	padding: 17px;
+	box-sizing:border-box;
+}
+
+.CollectionContainerDescription h1 {
+	color: #313131;
+}
+.CollectionContainerDescription p1 {
+	color: #6E6E6E;
+	line-height: 1.8;
+}
+.CollectionContainerImage {
+	float: right;
+	width: 50%;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+}
+.CollectionContainerImage img {
+	width: 100%;
+	padding:20px;
+	box-sizing:border-box;
+}
+
+@media only screen and (max-width: 640px) {
+  .CollectionContainer {
+  	flex-direction:column;
+  }
+  .CollectionContainerDescription {
+  	width:100%;
+  	
+  }
+  .CollectionContainerImage {
+  	width: 100%;
+  }
+
+}

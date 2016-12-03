@@ -1,0 +1,17 @@
+/*ShippingNote*/
+
+#ShippingNote {
+    text-align:center;
+    height: 100px;
+
+}
+#ShippingNote .LineBreak {
+    width: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-sizing:border-box;
+    height: 1px;
+    background-color:#DDDDDD;
+    margin-right: auto;
+    margin-left: auto;
+}
