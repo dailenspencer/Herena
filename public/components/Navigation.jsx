@@ -8,7 +8,7 @@ class Nav extends React.Component {
     super(props);
    
     this.state = {
-      screenWidth: 0
+      screenWidth: $(document).width()
     };
   }
 

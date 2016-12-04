@@ -30204,7 +30204,7 @@
 	    var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
 	
 	    _this.state = {
-	      screenWidth: 0
+	      screenWidth: $(document).width()
 	    };
 	    return _this;
 	  }
