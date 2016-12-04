@@ -28778,7 +28778,7 @@
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _Shop = __webpack_require__(311);
+	var _Shop = __webpack_require__(310);
 	
 	var _Shop2 = _interopRequireDefault(_Shop);
 	
@@ -29286,31 +29286,31 @@
 	
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 	
-	var _Landing = __webpack_require__(293);
+	var _Landing = __webpack_require__(292);
 	
 	var _Landing2 = _interopRequireDefault(_Landing);
 	
-	var _MissionSection = __webpack_require__(305);
+	var _MissionSection = __webpack_require__(304);
 	
 	var _MissionSection2 = _interopRequireDefault(_MissionSection);
 	
-	var _SecondBreaker = __webpack_require__(306);
+	var _SecondBreaker = __webpack_require__(305);
 	
 	var _SecondBreaker2 = _interopRequireDefault(_SecondBreaker);
 	
-	var _Collections = __webpack_require__(307);
+	var _Collections = __webpack_require__(306);
 	
 	var _Collections2 = _interopRequireDefault(_Collections);
 	
-	var _ShippingNote = __webpack_require__(308);
+	var _ShippingNote = __webpack_require__(307);
 	
 	var _ShippingNote2 = _interopRequireDefault(_ShippingNote);
 	
-	var _ImageSpacer = __webpack_require__(309);
+	var _ImageSpacer = __webpack_require__(308);
 	
 	var _ImageSpacer2 = _interopRequireDefault(_ImageSpacer);
 	
-	var _Footer = __webpack_require__(310);
+	var _Footer = __webpack_require__(309);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
@@ -30179,7 +30179,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _jqueryHelpers = __webpack_require__(292);
+	var _jqueryHelpers = __webpack_require__(312);
 	
 	var jqueryHelpers = _interopRequireWildcard(_jqueryHelpers);
 	
@@ -30203,11 +30203,21 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
 	
-	    _this.state = {};
+	    _this.state = {
+	      screenWidth: 0
+	    };
 	    return _this;
 	  }
 	
 	  _createClass(Nav, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var that = this;
+	      window.addEventListener("resize", function () {
+	        that.setState({ screenWidth: $(document).width() });
+	      });
+	    }
+	  }, {
 	    key: 'changeView',
 	    value: function changeView(view) {
 	      _reactRouter.browserHistory.push(view);
@@ -30259,37 +30269,76 @@
 	        { id: 'MainNav' },
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'MainNavNavigation' },
+	          { id: 'MobileNavNavigation', onClick: function onClick() {
+	              return _this3.handleMobileMenuClick();
+	            } },
+	          _react2.default.createElement('img', { src: 'images/menu-button.png' })
+	        ),
+	        _react2.default.createElement('img', { id: 'MainNavLogo', src: 'images/AliDakotaLogo.jpeg' }),
+	        _react2.default.createElement('img', { id: 'MainNavCart', src: 'images/shopping-bag.png' }),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'MobileNavSlideOut' },
 	          _react2.default.createElement(
 	            'h1',
 	            { onClick: function onClick() {
-	                return _this3.changeView("/");
+	                return _this3.handleMobileNavClick("/");
 	              } },
 	            'HOME'
 	          ),
 	          _react2.default.createElement(
 	            'h1',
 	            { onClick: function onClick() {
-	                return _this3.changeView("/shop");
+	                return _this3.handleMobileNavClick("/shop");
 	              } },
 	            'SHOP'
 	          ),
 	          _react2.default.createElement(
 	            'h1',
 	            { onClick: function onClick() {
-	                return _this3.changeView("/contact");
+	                return _this3.handleMobileNavClick("/contact");
 	              } },
 	            'CONTACT'
-	          )
-	        ),
-	        _react2.default.createElement('img', { id: 'MainNavLogo', src: 'images/AliDakotaLogo.jpeg' }),
-	        _react2.default.createElement('img', { id: 'MainNavCart', src: 'images/shopping-bag.png' })
+	          ),
+	          _react2.default.createElement('img', { src: 'images/cancel.png', onClick: function onClick() {
+	              return _this3.handleCloseMobileNav();
+	            } })
+	        )
 	      );
+	    }
+	  }, {
+	    key: 'handleMobileNavClick',
+	    value: function handleMobileNavClick(view) {
+	      this.changeView(view);
+	      this.handleCloseMobileNav();
+	    }
+	  }, {
+	    key: 'handleMobileMenuClick',
+	    value: function handleMobileMenuClick() {
+	
+	      $("#MobileNavSlideOut").animate({
+	        left: '0px'
+	      }, 200, function () {
+	        // Animation complete.
+	      });
+	    }
+	  }, {
+	    key: 'handleCloseMobileNav',
+	    value: function handleCloseMobileNav() {
+	      console.log('close mobile');
+	      $("#MobileNavSlideOut").animate({
+	        left: '-200px'
+	      }, 200, function () {
+	        // Animation complete.
+	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var navigation = jqueryHelpers.isMobile() ? this.getMobileNav() : this.getMainNav();
+	      var navigation = this.getMainNav();
+	      if (jqueryHelpers.isMobile() || this.state.screenWidth <= 640) {
+	        navigation = this.getMobileNav();
+	      }
 	      return navigation;
 	    }
 	  }]);
@@ -30301,83 +30350,6 @@
 
 /***/ },
 /* 292 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.fadeElements = fadeElements;
-	exports.hideElement = hideElement;
-	exports.showElement = showElement;
-	exports.fadeOutElement = fadeOutElement;
-	exports.fadeInElement = fadeInElement;
-	exports.removeScroll = removeScroll;
-	exports.addScroll = addScroll;
-	exports.dimBackground = dimBackground;
-	exports.undimBackground = undimBackground;
-	exports.isMobile = isMobile;
-	function fadeElements() {
-		this.arguments.forEach(function (element) {
-			element.fadeOut();
-		});
-	}
-	
-	function hideElement(element) {
-		$(element).css('display', 'none');
-	}
-	
-	function showElement(element) {
-		$(element).css('display', 'inline');
-	}
-	
-	function fadeOutElement(element, time) {
-		$(element).animate({
-			opacity: '0'
-		}, time, function () {
-			$(element).css('display', 'none');
-		});
-	}
-	
-	function fadeInElement(element, time) {
-		$(element).css('display', 'inline');
-		$(element).animate({
-			opacity: '1'
-		}, time);
-	}
-	
-	function removeScroll() {
-		$('html, body').css({
-			overflow: 'hidden',
-			height: '100%'
-		});
-	}
-	
-	function addScroll() {
-		$('html, body').css({
-			overflow: 'auto',
-			height: 'auto'
-		});
-	}
-	
-	function dimBackground() {
-		$('#Blanket').css('display', 'inline');
-	}
-	
-	function undimBackground() {
-		$('#Blanket').css('display', 'none');
-	}
-	
-	function isMobile() {
-		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-			return true;
-		}
-		return false;
-	}
-
-/***/ },
-/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30392,7 +30364,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _ReactCSSTransitionGroup = __webpack_require__(294);
+	var _ReactCSSTransitionGroup = __webpack_require__(293);
 	
 	var _ReactCSSTransitionGroup2 = _interopRequireDefault(_ReactCSSTransitionGroup);
 	
@@ -30453,7 +30425,7 @@
 	module.exports = Landing;
 
 /***/ },
-/* 294 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30478,8 +30450,8 @@
 	
 	var React = __webpack_require__(3);
 	
-	var ReactTransitionGroup = __webpack_require__(295);
-	var ReactCSSTransitionGroupChild = __webpack_require__(302);
+	var ReactTransitionGroup = __webpack_require__(294);
+	var ReactCSSTransitionGroupChild = __webpack_require__(301);
 	
 	function createTransitionTimeoutPropValidator(transitionType) {
 	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
@@ -30562,7 +30534,7 @@
 	module.exports = ReactCSSTransitionGroup;
 
 /***/ },
-/* 295 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -30586,8 +30558,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(3);
-	var ReactAddonsDOMDependencies = __webpack_require__(296);
-	var ReactTransitionChildMapping = __webpack_require__(300);
+	var ReactAddonsDOMDependencies = __webpack_require__(295);
+	var ReactTransitionChildMapping = __webpack_require__(299);
 	
 	var emptyFunction = __webpack_require__(13);
 	
@@ -30817,7 +30789,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 296 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -30844,8 +30816,8 @@
 	};
 	
 	if (process.env.NODE_ENV !== 'production') {
-	  var ReactPerf = __webpack_require__(297);
-	  var ReactTestUtils = __webpack_require__(298);
+	  var ReactPerf = __webpack_require__(296);
+	  var ReactTestUtils = __webpack_require__(297);
 	
 	  exports.getReactPerf = function () {
 	    return ReactPerf;
@@ -30858,7 +30830,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 297 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31364,7 +31336,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 298 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31393,7 +31365,7 @@
 	var ReactInstanceMap = __webpack_require__(117);
 	var ReactUpdates = __webpack_require__(57);
 	var SyntheticEvent = __webpack_require__(54);
-	var ReactShallowRenderer = __webpack_require__(299);
+	var ReactShallowRenderer = __webpack_require__(298);
 	
 	var findDOMNode = __webpack_require__(173);
 	var invariant = __webpack_require__(9);
@@ -31781,7 +31753,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 299 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31921,7 +31893,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 300 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31936,7 +31908,7 @@
 	
 	'use strict';
 	
-	var flattenChildren = __webpack_require__(301);
+	var flattenChildren = __webpack_require__(300);
 	
 	var ReactTransitionChildMapping = {
 	  /**
@@ -32029,7 +32001,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -32110,7 +32082,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 302 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -32126,10 +32098,10 @@
 	'use strict';
 	
 	var React = __webpack_require__(3);
-	var ReactAddonsDOMDependencies = __webpack_require__(296);
+	var ReactAddonsDOMDependencies = __webpack_require__(295);
 	
-	var CSSCore = __webpack_require__(303);
-	var ReactTransitionEvents = __webpack_require__(304);
+	var CSSCore = __webpack_require__(302);
+	var ReactTransitionEvents = __webpack_require__(303);
 	
 	var onlyChild = __webpack_require__(32);
 	
@@ -32281,7 +32253,7 @@
 	module.exports = ReactCSSTransitionGroupChild;
 
 /***/ },
-/* 303 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -32408,7 +32380,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 304 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -32485,7 +32457,7 @@
 	module.exports = ReactTransitionEvents;
 
 /***/ },
-/* 305 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32561,7 +32533,7 @@
 	module.exports = MissionSection;
 
 /***/ },
-/* 306 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32576,7 +32548,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _ReactCSSTransitionGroup = __webpack_require__(294);
+	var _ReactCSSTransitionGroup = __webpack_require__(293);
 	
 	var _ReactCSSTransitionGroup2 = _interopRequireDefault(_ReactCSSTransitionGroup);
 	
@@ -32633,7 +32605,7 @@
 	module.exports = SecondBreaker;
 
 /***/ },
-/* 307 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32782,7 +32754,7 @@
 	module.exports = Collections;
 
 /***/ },
-/* 308 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32797,7 +32769,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _ReactCSSTransitionGroup = __webpack_require__(294);
+	var _ReactCSSTransitionGroup = __webpack_require__(293);
 	
 	var _ReactCSSTransitionGroup2 = _interopRequireDefault(_ReactCSSTransitionGroup);
 	
@@ -32847,7 +32819,7 @@
 	module.exports = ShippingNote;
 
 /***/ },
-/* 309 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32911,7 +32883,7 @@
 	module.exports = ImageSpacer;
 
 /***/ },
-/* 310 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32967,7 +32939,7 @@
 	module.exports = Footer;
 
 /***/ },
-/* 311 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32986,11 +32958,11 @@
 	
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 	
-	var _Footer = __webpack_require__(310);
+	var _Footer = __webpack_require__(309);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _ProductEntry = __webpack_require__(312);
+	var _ProductEntry = __webpack_require__(311);
 	
 	var _ProductEntry2 = _interopRequireDefault(_ProductEntry);
 	
@@ -33112,7 +33084,7 @@
 	module.exports = Shop;
 
 /***/ },
-/* 312 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33127,7 +33099,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _jqueryHelpers = __webpack_require__(292);
+	var _jqueryHelpers = __webpack_require__(312);
 	
 	var jqueryHelpers = _interopRequireWildcard(_jqueryHelpers);
 	
@@ -33246,6 +33218,83 @@
 	module.exports = ProductEntry;
 
 /***/ },
+/* 312 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.fadeElements = fadeElements;
+	exports.hideElement = hideElement;
+	exports.showElement = showElement;
+	exports.fadeOutElement = fadeOutElement;
+	exports.fadeInElement = fadeInElement;
+	exports.removeScroll = removeScroll;
+	exports.addScroll = addScroll;
+	exports.dimBackground = dimBackground;
+	exports.undimBackground = undimBackground;
+	exports.isMobile = isMobile;
+	function fadeElements() {
+		this.arguments.forEach(function (element) {
+			element.fadeOut();
+		});
+	}
+	
+	function hideElement(element) {
+		$(element).css('display', 'none');
+	}
+	
+	function showElement(element) {
+		$(element).css('display', 'inline');
+	}
+	
+	function fadeOutElement(element, time) {
+		$(element).animate({
+			opacity: '0'
+		}, time, function () {
+			$(element).css('display', 'none');
+		});
+	}
+	
+	function fadeInElement(element, time) {
+		$(element).css('display', 'inline');
+		$(element).animate({
+			opacity: '1'
+		}, time);
+	}
+	
+	function removeScroll() {
+		$('html, body').css({
+			overflow: 'hidden',
+			height: '100%'
+		});
+	}
+	
+	function addScroll() {
+		$('html, body').css({
+			overflow: 'auto',
+			height: 'auto'
+		});
+	}
+	
+	function dimBackground() {
+		$('#Blanket').css('display', 'inline');
+	}
+	
+	function undimBackground() {
+		$('#Blanket').css('display', 'none');
+	}
+	
+	function isMobile() {
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			return true;
+		}
+		return false;
+	}
+
+/***/ },
 /* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -33261,7 +33310,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _jqueryHelpers = __webpack_require__(292);
+	var _jqueryHelpers = __webpack_require__(312);
 	
 	var jqueryHelpers = _interopRequireWildcard(_jqueryHelpers);
 	
@@ -49063,7 +49112,7 @@
 /* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(295);
+	module.exports = __webpack_require__(294);
 
 /***/ },
 /* 530 */

@@ -7,6 +7,13 @@
 	padding: 15px 30px 15px 30px;
 	box-sizing:border-box;
 }
+#MainNavNavigation h1 {
+	font-size:14px;
+	cursor: pointer;
+}
+#MainNavNavigation h1:hover {
+	color:lightgray;
+}
 
 #MainNavNavigation {
 	display: flex;
@@ -17,13 +24,7 @@
 	margin-top:30px;
 }
 
-#MainNavNavigation h1 {
-	font-size:14px;
-	cursor: pointer;
-}
-#MainNavNavigation h1:hover {
-	color:lightgray;
-}
+
 
 
 #MainNavLogo {
@@ -42,6 +43,44 @@
 	cursor:pointer;
 }
 
+#MobileNavNavigation {
+	width: 30px;
+    position: absolute;
+    top: 25px;
+    cursor: pointer;
+}
+#MobileNavNavigation img {
+	width: 100%;
+}
+#MobileNavNavigation h1 {
+	font-size:24px;
+}
+
+#MobileNavSlideOut {
+	position: fixed;
+	width:200px;
+	height: 100%;
+	top:0px;
+	left:-200px;
+	background-color: white;
+	padding: 10px;
+	z-index: 20;
+}
+#MobileNavSlideOut h1 {
+	cursor: pointer;
+}
+
+#MobileNavSlideOut img {
+	width: 30px;
+	height: 30px;
+
+}
+#MobileNavSlideOut img {
+	position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
 
 @media only screen and (max-width: 640px) {
   #MainNav {
