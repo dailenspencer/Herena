@@ -1,11 +1,16 @@
 @font-face {
   font-family: 'Julia';
-  src:  url('../Fonts/juliasanssone.woff2') format('woff2')
+  src:  url('/Fonts/juliasansonev5.woff2') format('woff'),
+        url('/Fonts/juliasansonev9.woff2') format('woff')
+
 }
 
 html {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
+    width: 100%;
+    height: 100%;
+
 }
 
 h1,h2 {
@@ -20,6 +25,8 @@ h1,h2 {
 }
 body {
 	margin: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 #MainBody {

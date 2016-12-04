@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Scroll from 'react-scroll'
-import Navigation from './Navigation/navigation';
+import Navigation from './Navigation';
 import Landing from './Landing/Landing';
 import Mission from './MissionSection';
 import SecondBreaker from './SecondBreaker';
@@ -9,7 +9,6 @@ import Collections from './Collections';
 import ShippingNote from './ShippingNote';
 import ImageSpacer from './ImageSpacer';
 import Footer from './Footer';
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +16,7 @@ class Home extends React.Component {
     this.state = {
       
     };
+    
   }
 
   

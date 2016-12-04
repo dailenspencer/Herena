@@ -2,6 +2,7 @@
 	height:200px;
 	background-color: white;
 	text-align: center;
+	width: 100%;
 	color:black;
 	display: flex;
 	justify-content:center;

@@ -39,7 +39,9 @@
 	float: right;
 	width:30px;
 	margin-top:35px;
+	cursor:pointer;
 }
+
 
 @media only screen and (max-width: 640px) {
   #MainNav {
